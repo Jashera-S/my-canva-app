@@ -4,7 +4,7 @@ services:
     env: node
     plan: free  # Change to "starter" or another plan if needed
     buildCommand: "npm install"
-    startCommand: "npm start"  # Or whatever command you use to start your app
+    startCommand: "node index.js"  # Or whatever command you use to start your app
     branch: master
     autoDeploy: true
     healthCheckPath: "/"
