@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 
 // Serve static files from the 'public' directory
-app.use(express.static(path.join(__dirname, 'public'))); // This line serves static files
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Endpoint to fetch images from Unsplash
 app.get('/images', async (req, res) => {
@@ -20,11 +20,13 @@ app.get('/images', async (req, res) => {
     const imageUrls = response.data.map(image => image.urls.small);
     res.json(imageUrls);
   } catch (error) {
+    console.error('Error fetching images:', error); // Log error for better debugging
     res.status(500).json({ error: 'Failed to fetch images' });
   }
 });
 
-const PORT = process.env.PORT || 10000;
+// Use process.env.PORT or fallback to 5000
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`); // Change to just PORT, not localhost
 });
