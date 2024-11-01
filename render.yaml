@@ -2,12 +2,12 @@ services:
   - type: web
     name: my-canva-app
     env: node
-    plan: free  # Change to "starter" or another plan if needed
-    buildCommand: "npm install"
-    startCommand: "node index.js"  # Or whatever command you use to start your app
+    plan: free  # Change to "starter" if needed
+    buildCommand: "npm install && npm run build"  # Install dependencies and build the Remix app
+    startCommand: "node image-proxy/index.js"  # Start the Express server, pointing to the correct path
     branch: master
     autoDeploy: true
-    healthCheckPath: "/"
+    healthCheckPath: "/"  # Ensure this path is valid for your Express server
     envVars:
       - key: UNSPLASH_ACCESS_KEY  # Example environment variable
         value: "UmFOp6vj92Rz9Nt4N8KsDh4YkVQ48ucDA9GnBiQ-XPI"
