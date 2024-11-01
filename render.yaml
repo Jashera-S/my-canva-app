@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: my-canva-app
+    env: node
+    plan: free  # Change to "starter" or another plan if needed
+    buildCommand: "npm install"
+    startCommand: "npm start"  # Or whatever command you use to start your app
+    branch: master
+    autoDeploy: true
+    healthCheckPath: "/"
+    envVars:
+      - key: UNSPLASH_ACCESS_KEY  # Example environment variable
+        value: "UmFOp6vj92Rz9Nt4N8KsDh4YkVQ48ucDA9GnBiQ-XPI"
